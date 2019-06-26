@@ -1,0 +1,14 @@
+阅读本代码的顺序：
+获得id 优先级 哈希值  ->  按优先级排序
+Sort.GetId_Modinrows->Sort.SortTheRowsInBase
+
+对排序结果进行分组         ->  插入0/1操作数据库
+Embed.WaterMarkEmbeder->Embed.WaterMarkInserter
+
+对排序结果进行分组                ->  提起0/1操作数据库
+Extract.WaterMarkExtracter->Extract.WaterMarkGetter
+
+代码记录：2019/5/22
+提取水印出现了问题：在字符串确切的位置找到相应的0或1，因为字符串的长度由于之前插入了一个\n或\r导致长度改变，
+而获取确切的位置需要用hash%String.length()，令length()-1后依然有问题，待解决,具体问题如下：
+插入时用了hash%oriStr.length()的形式，提取时用了str.charAt()的形式，提取的数据不完整，不是每一条都能提取出来

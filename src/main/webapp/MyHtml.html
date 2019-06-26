@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>数据水印技术</title>
+		<meta name="description" content="Simple ideas for enhancing text input interactions" />
+		<meta name="keywords" content="input, text, effect, focus, transition, interaction, inspiration, web design" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		
+		<!--必要样式-->
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<link rel="stylesheet" type="text/css" href="css/button.css" />
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/s vn/trunk/html5.js"></script>
+		<![endif]-->
+		<style>
+@import url("https://fonts.googleapis.com/css?family=Lato");
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #eeebe8;
+}
+
+.flex-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-wrap__in {
+  width: 420px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pen-title {
+  width: 100%;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #6e6862;
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: .05em;
+}
+
+.pen-excerpt {
+  width: 100%;
+  color: #3c3732;
+  text-align: center;
+  letter-spacing: .2em;
+}
+
+canvas {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}
+</style>
+	</head>
+	<body>
+	
+		<div class="container">
+		
+			<header class="codrops-header">
+				<h1>Water Mark</h1>
+			</header>
+				<!-- *****************************************等待处理**************************************** -->
+			<div class="flex-wrap" id="loading" style="display: none;margin-top:-10%">
+			  	<div class="flex-wrap__in">
+			    	<h1 class="pen-title">正在处理水印</h1>
+			    	<p class="pen-excerpt">请耐心等待……</p>
+			    	<canvas class="js-rotate-01" width="100" height="100" style="display:none;"></canvas>
+			    	<canvas class="js-rotate-02" width="100" height="100"></canvas>
+			    	<canvas class="js-rotate-03" width="100" height="100" style="display:none;"></canvas>
+			    	<canvas class="js-rotate-04" width="100" height="100" style="display:none;"></canvas>
+			    	<canvas class="js-rotate-05" width="100" height="100" style="display:none;"></canvas>
+			    	<canvas class="js-rotate-06" width="100" height="100" style="display:none;"></canvas>
+			 	 </div>
+			</div>
+		
+		<!-- *****************************************嵌入**************************************** -->
+	
+			<section class="content bgcolor-7">
+				<h2>WaterMarkEmbed</h2>
+				<span class="input input--jiro">
+					<input class="input__field input__field--jiro" type="text" id="input-10" name="key" autocomplete="off">
+					<label class="input__label input__label--jiro" for="input-10">
+						<span class="input__label-content input__label-content--jiro">密钥</span>
+					</label>
+				</span>
+				<span class="input input--jiro">
+					<input class="input__field input__field--jiro" type="text" id="input-11" name="content" autocomplete="off">
+					<label class="input__label input__label--jiro" for="input-11">
+						<span class="input__label-content input__label-content--jiro">水印</span>
+					</label>
+				</span>
+				<span class="input input--jiro">
+					<input class="input__field input__field--jiro" type="text" id="input-12" name="comment" autocomplete="off">
+					<label class="input__label input__label--jiro" for="input-12">
+						<span class="input__label-content input__label-content--jiro">MAC</span>
+					</label>
+				</span>
+				<button onclick="embed()" class="button"   name="embed">嵌入水印</button>
+			</section>
+				<!-- *****************************************提取**************************************** -->
+			<section class="content bgcolor-7">
+				<h2>WaterMarkExtract</h2>
+				<span class="input input--kuro">
+					<input class="input__field input__field--kuro" type="text" id="input-7" name="key" autocomplete="off">
+					<label class="input__label input__label--kuro" for="input-7">
+						<span class="input__label-content input__label-content--kuro">密钥</span>
+					</label>
+				</span>
+				<button class="back" name="extract"  onclick="extract()"> 解析水印 </button>
+			</section>
+	<!-- *****************************************显示提取结果**************************************** -->
+			<section class="content bgcolor-3">
+				<span class="input input--kyo">
+					<input class="input__field input__field--kyo" type="text" id="input-19" autocomplete="off">
+					<label class="input__label input__label--kyo" for="input-19">
+						<span class="input__label-content input__label-content--kyo">What's your code?</span>
+					</label>
+				</span>
+		</section>
+		</div><!-- /container -->
+			<!-- *****************************************script**************************************** -->
+	<!-- 	<script type="text/javascript" src="js/waitting.js"></script> -->
+		<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="js/watermark.js"></script>
+		<script type="text/javascript" src="js/classie.js"></script>
+		<script type="text/javascript">
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+		</script>
+	</body>
+</html>
