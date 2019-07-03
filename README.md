@@ -32,14 +32,14 @@
 
 # 详细内容
 >### 数据集样式（截取部分）
->![alt text](/path/to/1.jpg)
+>![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/1.jpg)
 ￼
 >### 数据说明：
 >       本数据是景区评价文本数据
 >
 >### 嵌入水印：
 `输入详细内容`
-￼![alt text](/path/to/2.jpg)
+￼![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/2.jpg)
 `等待`
 
 ￼
@@ -49,17 +49,17 @@
 
 >### 插入数据后的表现（数据库）
 >       与插入前无异
->![alt text](/path/to/1.jpg)
+>![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/2.jpg)
 ￼
 >### 插入数据前后的数据分析结果（情感分析)
->![alt text](/path/to/img1.jpg)
+>![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/1.gif)
 ￼
 >
 >        文本型数据库数据表中插入了'回车'与‘换行’对情感分析并没有影响
 >
 >### 解析水印
->![alt text](/path/to/img1.jpg)
-￼
+>![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/3.jpg)
+￼>![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/4.jpg)
 
 ￼
 
