@@ -38,12 +38,11 @@
 >       本数据是景区评价文本数据
 >
 >### 嵌入水印：
-`输入详细内容`
-￼![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/2.jpg)
-`等待`
+>`输入详细内容`
+￼>![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/2.jpg)
+>`等待`
 
-￼
->插入数据后的表现    
+￼ 
 >
 ￼
 
