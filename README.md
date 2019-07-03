@@ -48,7 +48,7 @@
 
 >### 插入数据后的表现（数据库）
 >       与插入前无异
->![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/2.jpg)
+>![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/1.jpg)
 ￼
 >### 插入数据前后的数据分析结果（情感分析)
 >![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/1.gif)
