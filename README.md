@@ -32,7 +32,7 @@
 
 # 详细内容
 >### 数据集样式（截取部分）
->![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/1.jpg)
+>![alt text](https://github.com/Feithle/RuanJianBei/blob/master/src/main/webapp/img/readmeimg/1.jpg?raw=true)
 ￼
 >### 数据说明：
 >       本数据是景区评价文本数据
